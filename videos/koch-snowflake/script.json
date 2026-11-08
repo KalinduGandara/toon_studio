@@ -1,0 +1,22 @@
+{
+  "format": "short",
+  "seed": 6,
+  "music": {"volume": 0.22, "seed": 15},
+  "cast": {"narrator": {"voice": "narrator"}},
+  "lines": [
+    {"id": "k1", "who": "narrator", "text": "Can a shape have an infinitely long edge, and still fit on your screen?"},
+    {"id": "k2", "who": "narrator", "text": "Start with a triangle. Split every side into three, and add a smaller triangle on the middle part."},
+    {"id": "k3", "who": "narrator", "text": "Do it again. And again."},
+    {"id": "k4", "who": "narrator", "text": "Every step makes the edge four thirds longer. Repeat forever, and the edge becomes infinitely long."},
+    {"id": "k5", "who": "narrator", "text": "But the area never grows past eight fifths of the starting triangle."},
+    {"id": "k6", "who": "narrator", "text": "An infinite coastline around a finite island. This is the Koch snowflake."},
+    {"id": "k7", "who": "narrator", "text": "Would you rather walk around it, or paint it?"}
+  ],
+  "thumbAt": 33,
+  "post": {
+    "title": "A shape with an infinitely long edge",
+    "description": "The Koch snowflake: every step makes the edge 4/3 longer, so it grows forever, yet the area stays under 8/5 of the first triangle. Made with code.",
+    "hashtags": ["fractal", "kochsnowflake", "math", "infinity", "madewithcode"],
+    "pinned_comment": "Would you rather walk around it, or paint it?"
+  }
+}

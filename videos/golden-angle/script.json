@@ -1,0 +1,23 @@
+{
+  "format": "short",
+  "seed": 21,
+  "music": {"volume": 0.22, "seed": 5},
+  "cast": {"narrator": {"voice": "narrator"}},
+  "lines": [
+    {"id": "g1", "who": "narrator", "text": "Place seeds one at a time, turning by the same angle every time. Which angle makes the best sunflower?"},
+    {"id": "g2", "who": "narrator", "text": "A quarter turn gives four straight arms. Lots of wasted space."},
+    {"id": "g3", "who": "narrator", "text": "A third of a turn gives three arms. Simple fractions always make spokes."},
+    {"id": "g4", "who": "narrator", "text": "One hundred thirty seven degrees is close, but gaps still appear."},
+    {"id": "g5", "who": "narrator", "text": "Now the golden angle: about one hundred thirty seven point five degrees."},
+    {"id": "g6", "who": "narrator", "text": "No gaps. The golden ratio is the hardest number to approximate with fractions, so the seeds never line up."},
+    {"id": "g7", "who": "narrator", "text": "Count the spirals, and you will find Fibonacci numbers."},
+    {"id": "g8", "who": "narrator", "text": "What should we grow next?"}
+  ],
+  "thumbAt": 36,
+  "post": {
+    "title": "Why 137.5° makes a perfect sunflower",
+    "description": "Seeds placed one by one, each turned by the same angle. Simple fractions make spokes; the golden angle packs every seed. Made with code.",
+    "hashtags": ["goldenratio", "sunflower", "math", "fibonacci", "madewithcode"],
+    "pinned_comment": "Which angle surprised you most: 90, 120 or 137? What should we grow next?"
+  }
+}

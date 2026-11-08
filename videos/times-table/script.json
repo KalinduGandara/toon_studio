@@ -1,0 +1,63 @@
+{
+  "format": "short",
+  "seed": 8,
+  "music": {
+    "volume": 0.22,
+    "seed": 9
+  },
+  "cast": {
+    "narrator": {
+      "voice": "narrator"
+    }
+  },
+  "lines": [
+    {
+      "id": "t1",
+      "who": "narrator",
+      "text": "Put two hundred dots around a circle, and number them."
+    },
+    {
+      "id": "t2",
+      "who": "narrator",
+      "text": "Now connect every number to its double. Ten to twenty, twenty to forty, thirty to sixty."
+    },
+    {
+      "id": "t3",
+      "who": "narrator",
+      "text": "Keep going, and a heart appears. It's called a cardioid."
+    },
+    {
+      "id": "t4",
+      "who": "narrator",
+      "text": "Times three gives a nephroid, shaped like a kidney."
+    },
+    {
+      "id": "t5",
+      "who": "narrator",
+      "text": "Keep raising the multiplier, and the pattern keeps transforming."
+    },
+    {
+      "id": "t6",
+      "who": "narrator",
+      "text": "All of this comes from one rule: multiply, then connect."
+    },
+    {
+      "id": "t7",
+      "who": "narrator",
+      "text": "Pause on your favourite one, and tell me the number."
+    }
+  ],
+  "thumbAt": 17,
+  "post": {
+    "title": "Multiply by 2 on a circle and a heart appears",
+    "description": "200 dots on a circle, each joined to its double: a cardioid. Times 3 makes a nephroid, and every multiplier draws something new. Made with code.",
+    "hashtags": [
+      "math",
+      "timestables",
+      "cardioid",
+      "mathart",
+      "madewithcode"
+    ],
+    "pinned_comment": "Pause it on your favourite pattern: which multiplier was it?"
+  }
+}

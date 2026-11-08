@@ -1,0 +1,22 @@
+{
+  "format": "short",
+  "seed": 4,
+  "music": {"volume": 0.22, "seed": 12},
+  "cast": {"narrator": {"voice": "narrator"}},
+  "lines": [
+    {"id": "f1", "who": "narrator", "text": "Last time, random jumps drew a perfect triangle. Can randomness draw something alive?"},
+    {"id": "f2", "who": "narrator", "text": "This time there are four rules. Each one shrinks, tilts and moves a point."},
+    {"id": "f3", "who": "narrator", "text": "Pick a rule at random, apply it, and mark the spot. Then repeat."},
+    {"id": "f4", "who": "narrator", "text": "After a thousand jumps, it still looks like dust."},
+    {"id": "f5", "who": "narrator", "text": "But after seventy thousand, a fern grows out of pure randomness."},
+    {"id": "f6", "who": "narrator", "text": "Every leaf is a smaller copy of the whole fern. This is the Barnsley fern."},
+    {"id": "f7", "who": "narrator", "text": "Change the numbers in the rules, and a different plant grows. What should we grow next?"}
+  ],
+  "thumbAt": 31,
+  "post": {
+    "title": "4 random rules grow a fern",
+    "description": "Pick one of four simple rules at random, apply it, mark the point, repeat 70,000 times: the Barnsley fern appears. Made with code.",
+    "hashtags": ["fractal", "barnsleyfern", "math", "chaosgame", "madewithcode"],
+    "pinned_comment": "Part 2 of the chaos game series. What should random jumps draw next?"
+  }
+}

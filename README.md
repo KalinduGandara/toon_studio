@@ -84,7 +84,7 @@ Characters blink and breathe on their own (seeded timing).
 `label`, `arrow`, `card` and `counter` return an animation that also carries `.node`, so they
 work inside `all(...)` and you can change the node afterwards.
 
-**Maths visuals:** `src/fractals.ts` has `chaosGame`, `sierpinski` and `prefixPath`. The nodes
+**Maths visuals:** `src/fractals.ts` has `chaosGame`, `sierpinski`, `prefixPath`, `phyllotaxis` (+ `GOLDEN_ANGLE`), `timesTable`, `barnsleyFern`, `koch`, `perimeter` and `area`. Both nodes also accept a function instead of data, re-evaluated every frame, to animate the shape itself (e.g. sweep an angle or a multiplier). `PointCloud` supports round dots with per-point sizes, and `Polys` supports open polylines. The nodes
 `new PointCloud(...)` (tens of thousands of dots; animate `.count`) and `new Polys(...)` (thousands
 of polygons, filled or neon outlines, optional clip and a screen-fixed conic gradient) paint
 straight to the canvas. Example: `videos/three-dots` (chaos game → Sierpinski, seamless infinite
@@ -137,5 +137,5 @@ by the CLI.
 | `cli/voice/` | Provider registry, Kokoro provider, lip sync |
 | `cli/music.mjs` | Procedural ambient music bed |
 | `voices.json` | Logical voices → provider settings |
-| `videos/<slug>/` | `script.json` + `scene.tsx` per video. Demos: `cookie-apology` (couple), `first-try` (stick), `lightning-thunder` (16:9 explainer), `three-dots` (narrated fractal) |
+| `videos/<slug>/` | `script.json` + `scene.tsx` per video. Demos: `cookie-apology` (couple), `first-try` (stick), `lightning-thunder` (16:9 explainer), narrated maths visuals: `three-dots` (chaos game → Sierpinski), `golden-angle` (sunflower), `times-table` (cardioid), `barnsley-fern`, `koch-snowflake` |
 | `out/` | Renders and voice cache (gitignored) |
