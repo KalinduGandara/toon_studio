@@ -1,0 +1,13 @@
+{
+  "_comment": "Logical voices used by scripts (cast.<name>.voice). Each has settings per TTS provider. To switch engines, add a provider in cli/voice/, give every voice a block for it, and change default_provider (or pass --provider).",
+  "default_provider": "kokoro",
+  "voices": {
+    "narrator": {"kokoro": {"voice": "am_michael", "speed": 0.95}},
+    "narrator_uk": {"kokoro": {"voice": "bm_george", "speed": 0.95}},
+    "narrator_f": {"kokoro": {"voice": "af_heart", "speed": 0.95}},
+    "girl_sweet": {"kokoro": {"voice": "af_heart", "speed": 1.0}},
+    "girl_bright": {"kokoro": {"voice": "af_bella", "speed": 1.05}},
+    "boy_warm": {"kokoro": {"voice": "am_puck", "speed": 1.0}},
+    "boy_deep": {"kokoro": {"voice": "am_onyx", "speed": 0.95}}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "stem": "cookie-apology",
+  "format": "short",
+  "seed": 7,
+  "cast": {
+    "mia": {"voice": "girl_sweet"},
+    "leo": {"voice": "boy_warm"}
+  },
+  "lines": [
+    {"id": "l1", "who": "leo", "text": "Mia... are you still mad at me?"},
+    {"id": "l2", "who": "mia", "text": "Hmph. You ate the last cookie."},
+    {"id": "l3", "who": "leo", "text": "What if I bake you a hundred more?"},
+    {"id": "l4", "who": "mia", "text": "A hundred? Okay. You're forgiven."},
+    {"id": "l5", "who": "leo", "text": "Yay!"}
+  ],
+  "thumbAt": 11.5,
+  "post": {
+    "title": "He ate her last cookie 🍪",
+    "description": "How to say sorry properly. Made with code.",
+    "hashtags": ["cuteanimation", "couple", "animation", "madewithcode"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format": "long",
+  "seed": 5,
+  "cast": {"ana": {"voice": "narrator_f"}},
+  "lines": [
+    {"id": "e1", "who": "ana", "text": "Why do we see lightning before we hear thunder?"},
+    {"id": "e2", "who": "ana", "text": "Light travels about three hundred thousand kilometres every second."},
+    {"id": "e3", "who": "ana", "text": "Sound is much slower: about three hundred and forty metres per second."},
+    {"id": "e4", "who": "ana", "text": "So count the seconds, divide by three, and you get the distance in kilometres."}
+  ],
+  "thumbAt": 8.0,
+  "post": {"title": "Why lightning comes before thunder", "description": "Light vs sound, and the 3-second rule for storm distance. Made with code.", "hashtags": ["science", "explained", "lightning", "madewithcode"]}
+}

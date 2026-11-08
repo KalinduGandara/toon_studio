@@ -1,0 +1,12 @@
+{
+  "format": "short",
+  "seed": 3,
+  "cast": {"dev": {"voice": "boy_deep"}, "pal": {"voice": "narrator_uk"}},
+  "lines": [
+    {"id": "s1", "who": "dev", "text": "It compiled. On the first try."},
+    {"id": "s2", "who": "pal", "text": "That's... suspicious."},
+    {"id": "s3", "who": "dev", "text": "Don't jinx it!"}
+  ],
+  "thumbAt": 3.0,
+  "post": {"title": "When your code works on the first try", "description": "Every programmer knows this feeling. Made with code.", "hashtags": ["programming", "stickfigure", "codinghumor", "madewithcode"]}
+}

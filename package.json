@@ -1,0 +1,29 @@
+{
+  "name": "toon-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "2D character animation videos (stick figures, cute couples, explainers) with Revideo and a swappable TTS voice",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@revideo/2d": "^0.11.0",
+    "@revideo/core": "^0.11.0",
+    "@revideo/ffmpeg": "^0.11.0",
+    "@revideo/renderer": "^0.11.0",
+    "@revideo/ui": "^0.11.0",
+    "@revideo/vite-plugin": "^0.11.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit -p .",
+    "voice": "node cli/toon.mjs voice",
+    "render": "node cli/toon.mjs render"
+  }
+}
