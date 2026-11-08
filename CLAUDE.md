@@ -26,7 +26,7 @@ only, no copyrighted material, determinism, look at frames before calling a vide
   and `lipsync.mjs` so every provider behaves the same.
 - **Determinism:** randomness only through `s.rng` (seeded from `script.seed`). Vary the seed and
   the story between posts; templated, near-identical episodes break the inauthentic-content rule.
-- **Write for adults** in couple and story videos (made-for-kids risk; see `docs/roadmap.md` 5).
+- **Write for adults** in couple and story videos (made-for-kids risk; see `../archive/2026-11-pilot/docs/roadmap.md` 5).
 - **Captions:** keep them on for Shorts (on by default; off when a bubble shows the words).
 - `post.title` never contains `#shorts`: `release` adds it for YouTube only.
 - Framework changes (new poses, emotions, blocks) go in `src/`, with a test for any pure logic in

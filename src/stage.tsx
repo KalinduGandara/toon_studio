@@ -11,6 +11,8 @@ import type {Style} from './styles';
 export interface VoiceLine {
   who: string;
   text: string;
+  /** On-screen caption when it differs from the spoken text ("π ≈ 3.14" vs "pi is about three point one four"). */
+  caption?: string;
   file: string;
   duration: number;
   mouth: string;
@@ -45,7 +47,8 @@ export class Stage implements Host {
   /** Captions for spoken lines (default on: most viewers watch muted at first). */
   captions = true;
   private readonly thread: Thread;
-  private readonly caption: Txt;
+  /** Caption text node (brands restyle it: font, colours). */
+  readonly caption: Txt;
   private readonly curtain: Rect;
 
   constructor(view: View2D) {
@@ -116,7 +119,7 @@ export class Stage implements Host {
     if (opts.emotion) c.emote(opts.emotion);
     const tasks: ThreadGenerator[] = [this.play(l), this.lipSync(c, l)];
     // a bubble already shows the words, so captions default off when there is one
-    if (opts.captions ?? (this.captions && !opts.bubble)) tasks.push(this.showCaption(l.text, l.duration));
+    if (opts.captions ?? (this.captions && !opts.bubble)) tasks.push(this.showCaption(l.caption ?? l.text, l.duration));
     if (opts.bubble) tasks.push(this.bubble(c, l.text, l.duration));
     yield* all(...tasks);
     if (opts.emotion) c.emote(before);
@@ -126,7 +129,7 @@ export class Stage implements Host {
   *narrate(id: string, opts: {captions?: boolean} = {}): ThreadGenerator {
     const l = this.line(id);
     const tasks = [this.play(l)];
-    if (opts.captions ?? this.captions) tasks.push(this.showCaption(l.text, l.duration));
+    if (opts.captions ?? this.captions) tasks.push(this.showCaption(l.caption ?? l.text, l.duration));
     yield* all(...tasks);
   }
 

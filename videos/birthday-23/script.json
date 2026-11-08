@@ -1,0 +1,75 @@
+{
+  "format": "short",
+  "seed": 13,
+  "music": {
+    "volume": 0.2,
+    "seed": 23
+  },
+  "cast": {
+    "narrator": {
+      "voice": "narrator"
+    }
+  },
+  "lines": [
+    {
+      "id": "b1",
+      "who": "narrator",
+      "text": "Twenty three people. It's a coin flip that two share a birthday.",
+      "caption": "23 people. It's a coin flip that two share a birthday."
+    },
+    {
+      "id": "b2",
+      "who": "narrator",
+      "text": "Three hundred sixty five days. Add people one by one.",
+      "caption": "365 days. Add people one by one."
+    },
+    {
+      "id": "b3",
+      "who": "narrator",
+      "text": "Ten people: about twelve percent.",
+      "caption": "10 people: about 12%."
+    },
+    {
+      "id": "b4",
+      "who": "narrator",
+      "text": "Twelve percent sounds small, but count pairs. Twenty three people make two hundred fifty three pairs, each one a chance to match.",
+      "caption": "12% sounds small, but count pairs. 23 people make 253 pairs, each one a chance to match."
+    },
+    {
+      "id": "b5",
+      "who": "narrator",
+      "text": "At twenty three people, the chance is fifty point seven percent.",
+      "caption": "At 23 people, the chance is 50.7%."
+    },
+    {
+      "id": "b6",
+      "who": "narrator",
+      "text": "At fifty people it's ninety seven percent. At seventy, ninety nine point nine percent.",
+      "caption": "At 50 people it's 97%. At 70, 99.9%."
+    },
+    {
+      "id": "b7",
+      "who": "narrator",
+      "text": "Careful: that's any two people. Matching your birthday takes two hundred fifty three others.",
+      "caption": "Careful: that's any two people. Matching YOUR birthday takes 253 others."
+    },
+    {
+      "id": "b8",
+      "who": "narrator",
+      "text": "Have you met your birthday twin? Tell us below."
+    }
+  ],
+  "thumbAt": 27.2,
+  "post": {
+    "title": "23 people, 50% chance: the birthday paradox",
+    "description": "With 23 people, the chance that two share a birthday is 50.7%, because 23 people make 253 pairs. 50 people: 97%. 70 people: 99.9%. Assumes 365 equally likely days. Narrated with an AI voice. Animation made with code.",
+    "hashtags": [
+      "birthdayparadox",
+      "probability",
+      "math",
+      "statistics",
+      "visualmaths"
+    ],
+    "pinned_comment": "A football match has 23 people on the pitch. Check a team you follow: any shared birthdays?"
+  }
+}

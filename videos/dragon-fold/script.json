@@ -1,0 +1,65 @@
+{
+  "format": "short",
+  "seed": 18,
+  "music": {
+    "volume": 0.2,
+    "seed": 18
+  },
+  "cast": {
+    "narrator": {
+      "voice": "narrator"
+    }
+  },
+  "lines": [
+    {
+      "id": "r1",
+      "who": "narrator",
+      "text": "Fold paper in half ten times. Open each fold to a right angle."
+    },
+    {
+      "id": "r2",
+      "who": "narrator",
+      "text": "Real paper jams fast, so we fold it in code."
+    },
+    {
+      "id": "r3",
+      "who": "narrator",
+      "text": "One fold makes two segments. Two folds make four. Every fold doubles them."
+    },
+    {
+      "id": "r4",
+      "who": "narrator",
+      "text": "Ten folds make one thousand and twenty four, and the paper opens into a dragon.",
+      "caption": "Ten folds make 1,024, and the paper opens into a dragon."
+    },
+    {
+      "id": "r5",
+      "who": "narrator",
+      "text": "It never crosses itself, and four copies fit around one point without crossing."
+    },
+    {
+      "id": "r6",
+      "who": "narrator",
+      "text": "NASA physicists found it in the sixties: the Heighway dragon.",
+      "caption": "NASA physicists found it in the 1960s: the Heighway dragon."
+    },
+    {
+      "id": "r7",
+      "who": "narrator",
+      "text": "How many folds can you manage with real paper?"
+    }
+  ],
+  "thumbAt": 23.0,
+  "post": {
+    "title": "Fold a strip 10 times and a dragon appears",
+    "description": "Fold a strip in half 10 times (simulated: real paper jams long before), open every crease to 90°, and you get the Heighway dragon: 1,024 segments that never cross. Narrated with an AI voice. Animation made with code.",
+    "hashtags": [
+      "dragoncurve",
+      "fractal",
+      "math",
+      "papercraft",
+      "visualmaths"
+    ],
+    "pinned_comment": "How many times could you fold real paper? Try it and tell us."
+  }
+}

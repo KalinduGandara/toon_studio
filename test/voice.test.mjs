@@ -83,3 +83,12 @@ test('loadScript fills defaults and requires a title', () => {
   fs.writeFileSync(path.join(vdir, 'script.json'), JSON.stringify({lines: [], post: {}}));
   assert.throws(() => loadScript(vdir), /post.title is required/);
 });
+
+test('an optional caption reaches the manifest; the spoken text stays the TTS input', async () => {
+  const s = {cast: {a: {voice: 'v1'}}, lines: [{id: 'c1', who: 'a', text: 'pi is about three point one four', caption: 'π ≈ 3.14'}, {id: 'c2', who: 'a', text: 'Plain.'}]};
+  const dir = tmp();
+  const m = await buildVoice({script: s, voices, provider: 'fake', outDir: path.join(dir, 'out'), cacheDir: path.join(dir, 'cache')});
+  assert.equal(m.lines.c1.caption, 'π ≈ 3.14');
+  assert.equal(m.lines.c1.text, 'pi is about three point one four');
+  assert.equal('caption' in m.lines.c2, false);
+});

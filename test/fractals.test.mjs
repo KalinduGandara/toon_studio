@@ -67,3 +67,38 @@ test('Barnsley fern stays in its known box; Koch: perimeter x4/3, area -> 8/5 of
   assert.ok(area(k1) > area(k0)); // bumps point outward
   assert.ok(Math.abs(area(k5) / area(k0) - 1.6) < 0.015); // 1.5896 at depth 5, limit 8/5
 });
+
+test('darts: hits are cumulative and 4*hits/n approaches pi', async () => {
+  const {darts} = await import('../src/fractals.ts');
+  const d = darts(200000, new Rng(3));
+  assert.equal(d.hits[d.hits.length - 1], d.inside.reduce((a, b) => a + b, 0));
+  assert.ok(Math.abs((4 * d.hits[199999]) / 200000 - Math.PI) < 0.02);
+});
+
+test('dragon: 2^n segments, never revisits a segment', async () => {
+  const {dragon} = await import('../src/fractals.ts');
+  for (const n of [1, 4, 10]) {
+    const p = dragon(n);
+    assert.equal(p.length, 2 ** n + 1);
+    const seen = new Set();
+    for (let i = 1; i < p.length; i++) {
+      const a = p[i - 1].join(), b = p[i].join();
+      const key = a < b ? a + '|' + b : b + '|' + a;
+      assert.ok(!seen.has(key), `segment ${key} reused at fold ${n}`);
+      seen.add(key);
+    }
+  }
+});
+
+test('birthdayMatch matches the known values', async () => {
+  const {birthdayMatch} = await import('../src/fractals.ts');
+  assert.ok(Math.abs(birthdayMatch(23) - 0.5073) < 1e-4);
+  assert.ok(Math.abs(birthdayMatch(50) - 0.9704) < 1e-4);
+  assert.ok(birthdayMatch(22) < 0.5 && birthdayMatch(23) > 0.5);
+});
+
+test('dragon: a flat middle crease retraces the previous dragon', async () => {
+  const {dragon} = await import('../src/fractals.ts');
+  const set = (pts) => [...new Set(pts.map(([x, y]) => `${Math.round(x * 1e6) / 1e6},${Math.round(y * 1e6) / 1e6}`))].sort();
+  for (const n of [2, 5, 8]) assert.deepEqual(set(dragon(n, 90, 180)), set(dragon(n - 1)), `fold ${n}`);
+});

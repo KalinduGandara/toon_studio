@@ -161,3 +161,51 @@ export function area(pts: V[]): number {
   }
   return Math.abs(A) / 2;
 }
+
+// ---------- probability and folding visuals ----------
+
+/** Monte Carlo darts in the unit square: `inside[i]` = 1 if x² + y² ≤ 1; `hits[k]` = hits among the first k+1. */
+export function darts(n: number, rng: {next(): number}): {xs: Float32Array; ys: Float32Array; inside: Uint8Array; hits: Uint32Array} {
+  const xs = new Float32Array(n), ys = new Float32Array(n), inside = new Uint8Array(n), hits = new Uint32Array(n);
+  let h = 0;
+  for (let i = 0; i < n; i++) {
+    xs[i] = rng.next();
+    ys[i] = rng.next();
+    inside[i] = xs[i] * xs[i] + ys[i] * ys[i] <= 1 ? 1 : 0;
+    h += inside[i];
+    hits[i] = h;
+  }
+  return {xs, ys, inside, hits};
+}
+
+/**
+ * Paper strip folded in half `folds` times, then opened: the Heighway dragon. Returns
+ * 2^folds + 1 points, unit-length steps from (0,0) heading +x. `angleDeg` is the turn at each
+ * crease: 90 = opened to right angles (the dragon), 180 = still folded flat on itself.
+ * `newestDeg` is the angle of the middle crease only (the first one opened when unfolding); the
+ * others stay at `angleDeg`. With newestDeg = 180 the second half lies on the first, so the strip
+ * traces dragon(folds - 1); animating 180 → 90 swings that copy out about the end point.
+ */
+export function dragon(folds: number, angleDeg = 90, newestDeg = angleDeg): V[] {
+  let turns: number[] = []; // +1 left, -1 right
+  for (let f = 0; f < folds; f++) turns = [...turns, 1, ...turns.slice().reverse().map((t) => -t)];
+  const a = (angleDeg * Math.PI) / 180, b = (newestDeg * Math.PI) / 180;
+  const pts: V[] = [[0, 0], [1, 0]];
+  let heading = 0, x = 1, y = 0;
+  for (let i = 0; i < turns.length; i++) {
+    heading += turns[i] * (i === turns.length >> 1 ? b : a);
+    // exact right angles keep integer coordinates (the tests compare segments)
+    const dx = Math.round(Math.cos(heading) * 1e9) / 1e9, dy = Math.round(Math.sin(heading) * 1e9) / 1e9;
+    x += dx;
+    y += dy;
+    pts.push([x, y]);
+  }
+  return pts;
+}
+
+/** Chance that at least two of `people` share a birthday (365 equally likely days). */
+export function birthdayMatch(people: number, days = 365): number {
+  let none = 1;
+  for (let i = 0; i < people; i++) none *= (days - i) / days;
+  return 1 - none;
+}

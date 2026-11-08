@@ -1,0 +1,22 @@
+{
+  "format": "short",
+  "seed": 14,
+  "music": {"volume": 0.2, "seed": 14},
+  "cast": {"narrator": {"voice": "narrator"}},
+  "lines": [
+    {"id": "d1", "who": "narrator", "text": "Throw darts at random, and pi starts to appear.", "caption": "Throw darts at random, and π starts to appear."},
+    {"id": "d2", "who": "narrator", "text": "A quarter circle fills pi over four of this square. So four times the share inside lands near pi.", "caption": "A quarter circle fills π/4 of this square. So 4 × the share inside lands near π."},
+    {"id": "d3", "who": "narrator", "text": "One hundred darts. A rough guess.", "caption": "100 darts. A rough guess."},
+    {"id": "d4", "who": "narrator", "text": "A thousand darts. Closer.", "caption": "1,000 darts. Closer."},
+    {"id": "d5", "who": "narrator", "text": "A hundred thousand darts, and we get three point one four.", "caption": "100,000 darts, and we get 3.14."},
+    {"id": "d6", "who": "narrator", "text": "But it is slow. Every extra correct digit needs about a hundred times more darts.", "caption": "But it's slow. Every extra correct digit needs about 100× more darts."},
+    {"id": "d7", "who": "narrator", "text": "How many darts would you need for three point one four one five nine?", "caption": "How many darts would you need for 3.14159?"}
+  ],
+  "thumbAt": 22.6,
+  "post": {
+    "title": "Random darts find π",
+    "description": "Random darts in a square: the share that lands inside the quarter circle, times 4, creeps towards π. 100,000 darts give 3.14, but every extra digit needs about 100× more. Narrated with an AI voice. Animation made with code.",
+    "hashtags": ["pi", "math", "probability", "montecarlo", "visualmaths"],
+    "pinned_comment": "Guess: how many darts for 3.14159? And what else should we throw at π?"
+  }
+}

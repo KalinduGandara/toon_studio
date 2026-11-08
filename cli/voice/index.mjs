@@ -39,7 +39,7 @@ export function resolveJobs(script, voices, provider) {
       .update(JSON.stringify([provider, settings, line.text]))
       .digest('hex')
       .slice(0, 16);
-    return {id: line.id, who: line.who, text: line.text, settings, key};
+    return {id: line.id, who: line.who, text: line.text, caption: line.caption, settings, key};
   });
 }
 
@@ -76,6 +76,7 @@ export async function buildVoice({script, voices, provider, outDir, cacheDir, lo
     lines[j.id] = {
       who: j.who,
       text: j.text,
+      ...(j.caption ? {caption: j.caption} : {}),
       file,
       duration: +(samples.length / sampleRate).toFixed(3),
       mouth: mouthTrack(samples, sampleRate),
