@@ -84,6 +84,16 @@ Characters blink and breathe on their own (seeded timing).
 `label`, `arrow`, `card` and `counter` return an animation that also carries `.node`, so they
 work inside `all(...)` and you can change the node afterwards.
 
+**Maths visuals:** `src/fractals.ts` has `chaosGame`, `sierpinski` and `prefixPath`. The nodes
+`new PointCloud(...)` (tens of thousands of dots; animate `.count`) and `new Polys(...)` (thousands
+of polygons, filled or neon outlines, optional clip and a screen-fixed conic gradient) paint
+straight to the canvas. Example: `videos/three-dots` (chaos game → Sierpinski, seamless infinite
+zoom).
+
+**Music:** add `"music": {"volume": 0.2}` to `script.json` for a procedural ambient bed (original,
+seeded). It is mixed under the voice and ducked while someone speaks. Every export is then
+normalised to −14 LUFS.
+
 Anything Revideo can draw (`@revideo/2d`: `Rect`, `Circle`, `Path`, `Txt`, `Img`, `Latex`, ...)
 can be added with `s.add(<Rect .../>)` for one-off props.
 
@@ -125,6 +135,7 @@ by the CLI.
 | `src/` | Framework: `stage.tsx`, `character.tsx`, `styles.ts`, `rig.ts` (poses), `face.ts` (emotions), `blocks.tsx`, `project.tsx` |
 | `cli/toon.mjs` | `voice`, `render`, `frames` |
 | `cli/voice/` | Provider registry, Kokoro provider, lip sync |
+| `cli/music.mjs` | Procedural ambient music bed |
 | `voices.json` | Logical voices → provider settings |
-| `videos/<slug>/` | `script.json` + `scene.tsx` per video. Demos: `cookie-apology` (couple), `first-try` (stick), `lightning-thunder` (16:9 explainer) |
+| `videos/<slug>/` | `script.json` + `scene.tsx` per video. Demos: `cookie-apology` (couple), `first-try` (stick), `lightning-thunder` (16:9 explainer), `three-dots` (narrated fractal) |
 | `out/` | Renders and voice cache (gitignored) |

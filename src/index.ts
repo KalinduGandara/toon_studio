@@ -13,5 +13,9 @@ export type {Emotion} from './face';
 export {sky, room, night, paper, plain, hearts, sparkles, pop, title, heading, bullets, label, arrow, card, counter} from './blocks';
 export type {Bullets, Shown} from './blocks';
 export {Rng} from './rng';
+export {chaosGame, sierpinski, triPath, prefixPath} from './fractals';
+export type {V, Tri, ChaosGame} from './fractals';
+export {PointCloud, Polys} from './draw';
+export type {CloudData, PolySet} from './draw';
 // Revideo flow helpers, re-exported so scenes need only one import
 export {all, any, chain, delay, sequence, loop, waitFor} from '@revideo/core';

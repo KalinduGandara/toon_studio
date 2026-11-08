@@ -1,0 +1,23 @@
+{
+  "format": "short",
+  "seed": 11,
+  "music": {"volume": 0.22},
+  "cast": {"narrator": {"voice": "narrator"}},
+  "lines": [
+    {"id": "n1", "who": "narrator", "text": "Three dots. One simple rule. Watch what happens."},
+    {"id": "n2", "who": "narrator", "text": "Start anywhere. Pick one of the corners at random, and jump halfway towards it."},
+    {"id": "n3", "who": "narrator", "text": "Mark the spot. Then do it again. And again."},
+    {"id": "n4", "who": "narrator", "text": "A hundred jumps just look like random noise."},
+    {"id": "n5", "who": "narrator", "text": "But after twenty thousand jumps, a perfect pattern appears."},
+    {"id": "n6", "who": "narrator", "text": "This is the Sierpinski triangle. Every triangle is made of three smaller copies of itself."},
+    {"id": "n7", "who": "narrator", "text": "Zoom in as far as you like. The pattern never ends."},
+    {"id": "n8", "who": "narrator", "text": "Which fractal should we build next?"}
+  ],
+  "thumbAt": 30,
+  "post": {
+    "title": "Random jumps draw a perfect triangle",
+    "description": "Pick a random corner, jump halfway, repeat 20,000 times: the chaos game draws the Sierpinski triangle. Made with code.",
+    "hashtags": ["fractal", "sierpinski", "math", "chaosgame", "madewithcode"],
+    "pinned_comment": "Which fractal should we build next? Koch snowflake, dragon curve or something else?"
+  }
+}

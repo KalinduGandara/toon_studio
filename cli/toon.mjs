@@ -13,6 +13,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {ambientBed, writeWav} from './music.mjs';
 import {buildVoice} from './voice/index.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -100,6 +101,25 @@ async function render(videoDir, opts) {
   exportPack(script, provider, p);
 }
 
+const TARGET_LUFS = -14; // what YouTube and TikTok normalise to
+
+function integratedLoudness(file) {
+  const res = spawnSync('ffmpeg', ['-hide_banner', '-i', file, '-vn', '-af', 'ebur128=framelog=quiet', '-f', 'null', '-'], {encoding: 'utf8'});
+  const m = /I:\s+(-?[\d.]+) LUFS/.exec(res.stderr.split('Summary:').pop() || '');
+  return m ? +m[1] : null;
+}
+
+/** One linear gain to TARGET_LUFS (keeps the dynamics; video stream copied). */
+function normaliseLoudness(mp4) {
+  const lufs = integratedLoudness(mp4);
+  if (lufs === null || Math.abs(lufs - TARGET_LUFS) < 0.3) return;
+  const tmp = mp4.replace(/\.mp4$/, '.tmp.mp4');
+  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', mp4, '-map', '0', '-c:v', 'copy',
+    '-af', `volume=${(TARGET_LUFS - lufs).toFixed(2)}dB,alimiter=limit=0.89:level=false`,
+    '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', '-movflags', '+faststart', tmp]);
+  fs.renameSync(tmp, mp4);
+}
+
 function meanVolume(file) {
   const res = spawnSync('ffmpeg', ['-hide_banner', '-i', file, '-vn', '-af', 'volumedetect', '-f', 'null', '-'], {encoding: 'utf8'});
   return meanFrom(res.stderr);
@@ -121,19 +141,34 @@ function exportPack(script, provider, p) {
   const level = meanVolume(raw);
   if (level < -60) throw new Error(`render audio is silent (mean ${level} dB): the voice clips were not mixed in`);
   const mp4 = path.join(p.out, `${script.stem}.mp4`);
+  const inputs = ['-i', raw];
+  let audio = [];
+  if (script.music) {
+    // procedural bed under the voice, ducked while someone speaks
+    const wav = path.join(p.out, 'music.wav');
+    writeWav(wav, ambientBed(probeDuration(raw), script.music.seed ?? script.seed));
+    inputs.push('-i', wav);
+    const vol = script.music.volume ?? 0.2;
+    audio = ['-filter_complex',
+      `[0:a]aresample=48000,aformat=channel_layouts=stereo,asplit[v][sc];[1:a]volume=${vol}[m];` +
+      '[m][sc]sidechaincompress=threshold=0.04:ratio=5:attack=30:release=500[md];' +
+      '[v][md]amix=inputs=2:duration=first:normalize=0[a]',
+      '-map', '0:v', '-map', '[a]'];
+  }
   execFileSync('ffmpeg', [
-    '-v', 'error', '-y', '-i', raw,
+    '-v', 'error', '-y', ...inputs, ...audio,
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart',
     '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', mp4,
   ]);
   fs.rmSync(p.render, {recursive: true, force: true});
+  normaliseLoudness(mp4);
   const duration = probeDuration(mp4);
   const thumbAt = Math.min(script.thumbAt ?? duration * 0.5, Math.max(0, duration - 0.1));
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-ss', String(thumbAt), '-i', mp4, '-frames:v', '1', path.join(p.out, `${script.stem}_thumb.png`)]);
   fs.writeFileSync(path.join(p.out, `${script.stem}_post.json`), JSON.stringify(script.post, null, 2) + '\n');
   const meta = {
     tool: 'toon_studio', stem: script.stem, format: script.format, seed: script.seed, provider,
-    duration: +duration.toFixed(3), lines: script.lines.length, size: SIZES[script.format],
+    duration: +duration.toFixed(3), lines: script.lines.length, size: SIZES[script.format], music: script.music ?? null,
   };
   fs.writeFileSync(path.join(p.out, `${script.stem}.json`), JSON.stringify(meta, null, 2) + '\n');
   console.log(`export: ${mp4} (${duration.toFixed(1)} s)`);
